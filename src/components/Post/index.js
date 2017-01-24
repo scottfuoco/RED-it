@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Chip from 'material-ui/Chip';
 import styles from './styles.css';
+import { voteUp } from '../../store/actions/posts';
 
 const flatButtonCSS = {
   textTransform: 'lowercase'
@@ -20,13 +21,13 @@ const ChipCSS = {
     margin: '0 5px',
 }
 
-const Post = ({ post }) => {
+const Post = ({ post, dispatch }) => {
     return (
         <Paper style={PaperCSS} zDepth={1}>
             <a href={post.link} className={styles.PostLink}><h2 className={styles.PostTitle}>{post.title}</h2></a>
             <p>{post.description}</p>
             <div className={styles.PostBottomRow}>
-                <FlatButton label={`vote ${post.votes}`} style={flatButtonCSS} icon={<ArrowDropUp />} />
+                <FlatButton onClick={() => dispatch(voteUp(post.id))} label={`vote ${post.votes}`} style={flatButtonCSS} icon={<ArrowDropUp />}  />
                 <div className={styles.chips}>
                     {post.categories.map((category, i) => <Chip style={ChipCSS} key={i}>{category}</Chip>)}
                 </div>

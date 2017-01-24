@@ -3,17 +3,16 @@ import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
 
-
 import storeFactory from './store';
 import './styles/index.css';
 import routes from './routes';
 
-import { setPostFilter } from './store/actions/postFilter';
+import { data } from './mock-data';
 
 const initialState = {
-  weeks: [],
-  posts: [],
-  postFilter: '',
+  weeks: [...data.weeks],
+  posts: [...data.posts],
+  postFilter: 'React',
 }
 
 const store = storeFactory(initialState);
@@ -24,7 +23,7 @@ injectTapEventPlugin();
 
 ReactDOM.render(
  <Provider store={store}>
-  {routes} 
+  {routes}
  </Provider>,
   document.getElementById('root')
 );

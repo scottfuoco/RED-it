@@ -5,7 +5,7 @@ import weeksReducer from './weeks';
 
 export default combineReducers({
   posts: postsReducer,
-  postFilter: postFilterReducer,
   weeks: weeksReducer, 
+  postFilter: postFilterReducer,
 }
 )

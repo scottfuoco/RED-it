@@ -1,22 +1,18 @@
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import FlatButton from 'material-ui/FlatButton';
-
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react';
 import Post from '../../components/Post';
-import { data } from '../../mock-data';
 import styles from './styles.css';
+import { sortNewest, sortPopular } from '../../store/actions/posts';
 
 
 class PostList extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      posts: [],
-    };
-  }
 
   render() {
+
+    const { posts, postFilter, dispatch } = this.props;
+
     const ToolbarCSS = {
       margin: '0 0 10px',
       padding: '0 30px 0 50px',
@@ -38,20 +34,29 @@ class PostList extends Component {
           <ToolbarGroup lastChild={true}>
             <div className={styles.ToolbarRightContent}>
               <h3>Sort</h3>
-              <FlatButton style={flatButtonCSS}>Newest</FlatButton>
-              <FlatButton style={flatButtonCSS}>Popular</FlatButton>
+              <FlatButton onClick={() => dispatch(sortNewest())} style={flatButtonCSS}>Newest</FlatButton>
+              <FlatButton onClick={() => dispatch(sortPopular())} style={flatButtonCSS}>Popular</FlatButton>
             </div>
           </ToolbarGroup>
         </Toolbar>
 
-        {data.posts.map(post => <Post key={post.id} post={post} />)}
+        {posts
+          .filter((post) => post.categories.includes(postFilter))
+          .map((post) => <Post key={post.id} post={post} dispatch={dispatch} />)}
+
       </div >
     );
   }
 }
 
-// PostList.propTypes = {
+const mapStateToProps = state => ({
+  posts: state.posts,
+  postFilter: state.postFilter
 
-// };
+});
 
-export default PostList;
+PostList.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+export default connect(mapStateToProps)(PostList);

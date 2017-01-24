@@ -3,5 +3,5 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from 'redux'
 
 export default (initialState={}) => {
-	return (createStore)(appReducer, initialState, composeWithDevTools());
+	return createStore(appReducer, initialState, composeWithDevTools());
 }
