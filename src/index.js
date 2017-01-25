@@ -12,7 +12,6 @@ import { data } from './mock-data';
 const initialState = {
   weeks: [...data.weeks],
   posts: [...data.posts],
-  postFilter: 'React',
 }
 
 const store = storeFactory(initialState);

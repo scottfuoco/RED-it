@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
-import Categories from '../../containers/Categories';
+import Categories from '../Categories';
+import PostList from '../PostList';
+import Welcome from '../Welcome';
+import NotFound from '../../components/NotFound'
 import styles from './styles.css'
+
+import { Match, Miss } from 'react-router';
 
 
 class App extends Component {
@@ -9,7 +14,9 @@ class App extends Component {
     return (
       <div className={styles.app}>
         <Categories />
-        {this.props.children}
+        <Match exactly pattern='/' component={Welcome} />
+        <Match pattern='/posts/:category' component={PostList} />
+        <Miss component={NotFound} />
       </div>
     );
   }

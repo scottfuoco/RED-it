@@ -3,8 +3,8 @@ import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import {Link} from 'react-router';
-import { setPostFilter } from '../../store/actions/postFilter';
 import { connect } from 'react-redux';
+import slug from 'slug';
 
 const width = {
     width: '100%'
@@ -21,7 +21,14 @@ const Week = ({week, dispatch}) => {
             <Divider style={width} />
             {week.categories.map((category, i) => {
                 return (
-                    <Link onClick={() => dispatch(setPostFilter(category))} to='posts' key={i} style={LinkCSS}><ListItem>{category}</ListItem></Link>
+                    <Link
+                        to={{
+                            pathname:`/posts/${slug(category)}`,
+                            query: { sort: 'popular'}
+                        }}
+                        key={i}
+                        style={LinkCSS}
+                     ><ListItem>{category}</ListItem></Link>
                 )
             })}
         </List>

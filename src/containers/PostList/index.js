@@ -5,13 +5,24 @@ import React, { Component, PropTypes } from 'react';
 import Post from '../../components/Post';
 import styles from './styles.css';
 import { sortNewest, sortPopular } from '../../store/actions/posts';
+import slug from 'slug';
+import { Redirect, transitionTo } from 'react-router';
 
 
 class PostList extends Component {
 
-  render() {
+  
+  componentWillUpdate() {
+    const { query } = this.props.location;
+    const { sort } = query;
+    console.log(sort);
 
+  }
+  
+
+  render() {
     const { posts, postFilter, dispatch } = this.props;
+    const { category } = this.props.params;
 
     const ToolbarCSS = {
       margin: '0 0 10px',
@@ -23,6 +34,14 @@ class PostList extends Component {
     const flatButtonCSS = {
       height: '100%',
     };
+
+    const filteredPosts = posts
+          .reduce((acc, post) => {
+            if (post.categories.map(category => slug(category)).includes(slug(category))){
+              acc.push(<Post key={post.id} post={post} dispatch={dispatch} />)
+            }
+            return acc;
+          }, []);
 
     return (
       <div className={styles.postListConatainer}>
@@ -39,10 +58,8 @@ class PostList extends Component {
             </div>
           </ToolbarGroup>
         </Toolbar>
+        {filteredPosts.length ? filteredPosts : <Redirect to='/404' />}
 
-        {posts
-          .filter((post) => post.categories.includes(postFilter))
-          .map((post) => <Post key={post.id} post={post} dispatch={dispatch} />)}
 
       </div >
     );

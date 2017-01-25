@@ -28,6 +28,7 @@ export const data = {
     votes: 0,
     categories: [
       'React',
+      'Node'
     ],
     title: 'React!!!!',
     description: 'Some React resource',
