@@ -13,6 +13,7 @@
     "eslint-plugin-react": "^6.9.0"
   },
   "dependencies": {
+    "body-parser": "^1.16.0",
     "deep-freeze": "0.0.1",
     "expect": "^1.20.2",
     "material-ui": "^0.16.6",
@@ -23,6 +24,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^1.0.0",
+    "redux-thunk": "^2.2.0",
     "slug": "^0.9.1"
   },
   "scripts": {

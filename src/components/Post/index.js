@@ -5,6 +5,7 @@ import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Chip from 'material-ui/Chip';
 import styles from './styles.css';
 import { voteUp } from '../../store/actions/posts';
+import { connect } from 'react-redux';
 
 const flatButtonCSS = {
   textTransform: 'lowercase'
@@ -20,7 +21,7 @@ const PaperCSS = {
 const ChipCSS = {
     margin: '0 5px',
 }
-
+          
 const Post = ({ post, dispatch }) => {
     return (
         <Paper style={PaperCSS} zDepth={1}>
@@ -36,4 +37,4 @@ const Post = ({ post, dispatch }) => {
     );
 };
 
-export default Post;
+export default connect()(Post);

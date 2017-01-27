@@ -4,6 +4,8 @@ const weeksReducer = (state=[], action) => {
       return state
     case 'ADD_CATEGORIES':
       return state
+    case 'LOAD_CATEGORIES':
+      return action.payload;
     default:
       return state;
   }

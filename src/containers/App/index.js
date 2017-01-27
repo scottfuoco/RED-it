@@ -15,7 +15,7 @@ class App extends Component {
       <div className={styles.app}>
         <Categories />
         <Match exactly pattern='/' component={Welcome} />
-        <Match pattern='/posts/:category' component={PostList} />
+        <Match exactly pattern='/posts/:category/:lessonId' component={PostList} />
         <Miss component={NotFound} />
       </div>
     );

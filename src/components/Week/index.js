@@ -5,6 +5,7 @@ import Subheader from 'material-ui/Subheader';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
 import slug from 'slug';
+import { fetchPosts } from '../../store/actions/posts';
 
 const width = {
     width: '100%'
@@ -19,18 +20,22 @@ const Week = ({week, dispatch}) => {
         <List style={width}>
             <Subheader style={width} inset={false}>{week.title}</Subheader>
             <Divider style={width} />
-            {week.categories.map((category, i) => {
+            {week ? 
+                week.lessons.map((lesson, i) => {
                 return (
                     <Link
                         to={{
-                            pathname:`/posts/${slug(category)}`,
+                            pathname:`/posts/${slug(lesson.category)}/${lesson.id}`,
                             query: { sort: 'popular'}
                         }}
+                        onClick={() => dispatch(fetchPosts(lesson.id))}
                         key={i}
                         style={LinkCSS}
-                     ><ListItem>{category}</ListItem></Link>
+                     ><ListItem>{lesson.category}</ListItem></Link>
                 )
-            })}
+            }) :
+            <div></div>
+        }
         </List>
     );
 };

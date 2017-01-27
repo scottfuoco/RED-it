@@ -3,7 +3,12 @@ export const addWeek = (id, title, categories) => ({
   payload: { id, title, categories },
 });
 
-export const addCategories = (categories) => ({
+export const addCategories = categories => ({
   type: 'ADD_CATEGORIES',
+  payload: categories,
+});
+
+export const loadCategories = categories => ({
+  type: 'LOAD_CATEGORIES',
   payload: categories,
 });

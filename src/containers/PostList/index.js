@@ -5,24 +5,16 @@ import React, { Component, PropTypes } from 'react';
 import Post from '../../components/Post';
 import styles from './styles.css';
 import { sortNewest, sortPopular } from '../../store/actions/posts';
-import slug from 'slug';
-import { Redirect, transitionTo } from 'react-router';
-
 
 class PostList extends Component {
 
-  
-  componentWillUpdate() {
-    const { query } = this.props.location;
-    const { sort } = query;
-    console.log(sort);
+
+  componentWillMount() {
 
   }
-  
 
   render() {
-    const { posts, postFilter, dispatch } = this.props;
-    const { category } = this.props.params;
+    const { posts, dispatch } = this.props;
 
     const ToolbarCSS = {
       margin: '0 0 10px',
@@ -35,13 +27,7 @@ class PostList extends Component {
       height: '100%',
     };
 
-    const filteredPosts = posts
-          .reduce((acc, post) => {
-            if (post.categories.map(category => slug(category)).includes(slug(category))){
-              acc.push(<Post key={post.id} post={post} dispatch={dispatch} />)
-            }
-            return acc;
-          }, []);
+    console.log(posts);
 
     return (
       <div className={styles.postListConatainer}>
@@ -58,9 +44,10 @@ class PostList extends Component {
             </div>
           </ToolbarGroup>
         </Toolbar>
-        {filteredPosts.length ? filteredPosts : <Redirect to='/404' />}
-
-
+        {posts.length ? 
+          posts.map(post => <Post key={post.id} post={post} />) :
+          <div>Sorry, no posts in this lesson</div>
+        }
       </div >
     );
   }
@@ -68,8 +55,6 @@ class PostList extends Component {
 
 const mapStateToProps = state => ({
   posts: state.posts,
-  postFilter: state.postFilter
-
 });
 
 PostList.propTypes = {

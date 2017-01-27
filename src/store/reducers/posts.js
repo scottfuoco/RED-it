@@ -1,4 +1,4 @@
-const postsReducer = (state={}, action) => {
+const postsReducer = (state=[], action) => {
   switch (action.type) {
     case 'VOTE_UP':
       return state.map((post) => {
@@ -9,6 +9,8 @@ const postsReducer = (state={}, action) => {
       return state.slice().sort((post, nextPost) => (parseInt(post.id, 10) - parseInt(nextPost.id, 10)));
     case 'SORT_POPULAR':
       return state.slice().sort((post, nextPost) => (nextPost.votes - post.votes));
+    case 'LOAD_POSTS':
+      return action.payload;
     default:
       return state;
   }

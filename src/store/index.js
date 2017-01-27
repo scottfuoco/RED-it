@@ -1,7 +1,6 @@
 import appReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore } from 'redux'
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 
-export default (initialState={}) => {
-	return createStore(appReducer, initialState, composeWithDevTools());
-}
+export default createStore(appReducer, composeWithDevTools(applyMiddleware(thunk)));
