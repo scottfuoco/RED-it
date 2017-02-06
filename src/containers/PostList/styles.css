@@ -1,4 +1,4 @@
-.postListConatainer {
+.postListContainer {
   width: 100%;
 }
 
@@ -8,4 +8,9 @@
   align-items: center;
   width: 200px;
   height: 100%;
+  padding-right: 1.5rem;
+}
+
+.sortText {
+  padding-right: .75rem;
 }

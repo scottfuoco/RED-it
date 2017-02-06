@@ -1554,7 +1554,7 @@ cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
 
-cookie@0.3.1:
+cookie@0.3.1, cookie@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
@@ -2643,6 +2643,10 @@ fstream@^1.0.0, fstream@^1.0.2, fstream@~1.0.10:
 function-bind@^1.0.2, function-bind@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
+
+gandalf-validator@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gandalf-validator/-/gandalf-validator-0.1.1.tgz#d44f60e7d08acc42eeac41cbc43c2418ae986ed0"
 
 gauge@~2.6.0:
   version "2.6.0"
@@ -4948,6 +4952,13 @@ react-broadcast@^0.1.2:
   resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.1.2.tgz#950de63578a2af399a396067a617af7402182330"
   dependencies:
     invariant "^2.2.1"
+
+react-cookie@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-cookie/-/react-cookie-1.0.4.tgz#4fe715d4c0abbcd18b671df5752c43d3109836c9"
+  dependencies:
+    cookie "^0.3.1"
+    object-assign "^4.1.0"
 
 react-dev-utils@^0.4.2:
   version "0.4.2"

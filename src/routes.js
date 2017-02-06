@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import MainLayout from './layouts/MainLayout';
+import App from './containers/App';
 
 
 
@@ -13,7 +13,7 @@ import './styles/index.css';
 const routes = (
     <Router>
        <MuiThemeProvider muiTheme={muiTheme}>
-        <MainLayout />
+        <App />
       </MuiThemeProvider>
     </Router>
 );

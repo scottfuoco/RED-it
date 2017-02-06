@@ -1,3 +1,4 @@
+import { GETREQUEST } from '../../constants';
 import { fetchingResource, doneFetching } from './fetching';
 
 export const voteUp = id => ({
@@ -5,15 +6,9 @@ export const voteUp = id => ({
   payload: { id },
 });
 
-export const sortNewest = () => ({
-  type: 'SORT_NEWEST',
-  payload: {},
-});
+export const sortNewest = () => { type: 'SORT_NEWEST' };
 
-export const sortPopular = () => ({
-  type: 'SORT_POPULAR',
-  payload: {},
-});
+export const sortPopular = () => { type: 'SORT_POPULAR' };
 
 export const loadPosts = posts => ({
   type: 'LOAD_POSTS',
@@ -22,7 +17,7 @@ export const loadPosts = posts => ({
 
 export const fetchPosts = lessonId => dispatch => {
   dispatch(fetchingResource());
-  fetch(`http://localhost:8000/api/posts/${lessonId}`)
+  fetch(`http://localhost:8000/api/posts/${lessonId}`, GETREQUEST)
     .then(res => res.json())
     .then(json => {
       dispatch(loadPosts(json))

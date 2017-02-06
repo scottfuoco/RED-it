@@ -25,13 +25,14 @@ const Week = ({week, dispatch}) => {
                 return (
                     <Link
                         to={{
-                            pathname:`/posts/${slug(lesson.category)}/${lesson.id}`,
-                            query: { sort: 'popular'}
+                            pathname:`/posts/${slug(lesson.lesson)}/${lesson.id}`
                         }}
                         onClick={() => dispatch(fetchPosts(lesson.id))}
                         key={i}
-                        style={LinkCSS}
-                     ><ListItem>{lesson.category}</ListItem></Link>
+                        style={LinkCSS}>
+                        <ListItem>{lesson.lesson}</ListItem>
+                    </Link>
+
                 )
             }) :
             <div></div>
